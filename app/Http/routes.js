@@ -22,4 +22,6 @@ Route.on('/').render('welcome')
 Route.post('/users', 'UserController.register')
 Route.post('/login', 'UserController.login')
 
-Route.post('/users/:id/posts', 'PostController.create')
+Route.get('/auth_test', 'UserController.auth_test').middleware('auth')
+
+Route.post('/users/:id/posts', 'PostController.create').middleware('auth')

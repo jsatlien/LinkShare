@@ -38,6 +38,14 @@ class UserController {
         response.status(401).json({ error: "Wrong username or password" })
       }
   }
+
+  * auth_test (request, response) {
+    let user = request.authUser
+
+    console.log(request.authUser)
+    response.json(user)
+  }
+
 }
 
 module.exports = UserController
