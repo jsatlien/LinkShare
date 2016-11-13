@@ -25,3 +25,4 @@ Route.post('/login', 'UserController.login')
 Route.get('/auth_test', 'UserController.auth_test').middleware('auth')
 
 Route.post('/users/:id/posts', 'PostController.create').middleware('auth')
+Route.get('/users/:id/posts'), 'PostController.show'
