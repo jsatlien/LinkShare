@@ -14,15 +14,14 @@ class CommentController {
     let newComment = yield Comment.create(data)
 
     response.json(newComment)
-  }
+    }
 
     * show (request, response) {
-      let userId = request.param('id')
       let postId = request.param('post_id')
-      let comments = Comment.query().where('post_id', postId).orderBy('created_at', 'desc')
+      let comments = yield Comment.query().where('post_id', postId).orderBy('created_at', 'desc')
 
-      if(comments) {
-        response.json(comments)
+      if (comments) {
+        response.json(comments);
       } else {
         response.status(401).json({error: 'No comments for this post yet.'})
       }
