@@ -20,10 +20,10 @@ class CommentController {
       let postId = request.param('post_id')
       let comments = yield Comment.query().where('post_id', postId).orderBy('created_at', 'desc')
 
-      if (comments) {
+      if (comments.length > 0) {
         response.json(comments);
       } else {
-        response.status(401).json({error: 'No comments for this post yet.'})
+        response.status(401).json('No comments for this post yet.')
       }
     }
 
@@ -32,7 +32,7 @@ class CommentController {
       let commentId = request.param('comment_id')
       let commentUserId = request.param('id')
       if (user.id = commentUserId) {
-        yield Post.query().where('id', commentId).del()
+        yield Comment.query().where('id', commentId).del()
         response.json("Comment deleted.")
       } else {
         response.json({error: 'Unable to delete comment.'})
