@@ -28,3 +28,4 @@ Route.post('/users/:id/posts', 'PostController.create').middleware('auth')
 Route.get('/users/:id/posts', 'PostController.show')
 
 Route.post('/users/:id/posts/:post_id/comments', 'CommentController.create').middleware('auth')
+Route.get('/users/:id/posts/:post_id/comments', 'CommentController.show')
