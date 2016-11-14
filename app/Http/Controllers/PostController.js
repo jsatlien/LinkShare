@@ -14,7 +14,7 @@ class PostController {
   }
   * show (request, response) {
     let userId = request.param('id')
-    let posts = yield Post.query().where('user_id', userId)
+    let posts = yield Post.query().where('user_id', userId).orderBy('created_at', 'desc')
     if (posts) {
       response.json(posts)
     } else {
