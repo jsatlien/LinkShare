@@ -21,6 +21,12 @@ class PostController {
       response.status(401).json({ error: 'This user currently has no posts.'})
      }
   }
+
+  * delete (request, response) {
+    let user = request.authUser
+    let postId = request.param('post_id')
+    let postUserId = request.param('id')
+  }
 }
 
 
