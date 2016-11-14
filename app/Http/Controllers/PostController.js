@@ -26,6 +26,14 @@ class PostController {
     let user = request.authUser
     let postId = request.param('post_id')
     let postUserId = request.param('id')
+    if (user.id = postUserId) {
+      console.log('true')
+      yield Post.query().where('post_id', postId).del()
+      response.json("Post removed.")
+    } else {
+      response.json({error: 'Unable to remove post.'})
+    }
+
   }
 }
 
