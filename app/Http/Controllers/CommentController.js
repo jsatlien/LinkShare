@@ -27,6 +27,18 @@ class CommentController {
         response.status(401).json({error: 'No comments for this post yet.'})
       }
     }
+
+    * delete (request, response) {
+      let user = request.authUser
+      let commentId = request.param('comment_id')
+      let commentUserId = request.param('id')
+      if (user.id = commentUserId) {
+        yield Post.query().where('id', commentId).del()
+        response.json("Comment deleted.")
+      } else {
+        response.json({error: 'Unable to delete comment.'})
+      }
+    }
 }
 
 module.exports = CommentController
