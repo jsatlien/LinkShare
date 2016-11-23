@@ -24,6 +24,7 @@ logs in a user and gives them an access token.
 GET /auth_test
 
 Tests the authorization of a user by checking their access token.
+
 ------------------------------------
 
 
