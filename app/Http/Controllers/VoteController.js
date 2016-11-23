@@ -5,12 +5,12 @@ const Post = use('App/Model/Post')
 
 class VoteController {
   * create (request, response) {
-    let user = request.authUser
+    let currentUser = request.authUser
     let postId = request.param('post_id')
+    let postUser = request.param('post_id')
     let data = {}
     data.user_id = user.id
     data.post_id = postId
-    data.vote_count = 1
 
     let voteCheck = yield Vote.query()
       .where({'post_id': postId,
