@@ -1,4 +1,4 @@
-[Heroku Server](https://git.heroku.com/desolate-basin-40554.git)
+[Heroku Server](https://desolate-basin-40554.herokuapp.com/)
 
 Routes Directory:
 
