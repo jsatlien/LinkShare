@@ -11,6 +11,7 @@ creates a new user in the database.
 * username - string
 * email - string
 * password - string
+
 ------------------------------------
 POST /login
 
@@ -18,6 +19,7 @@ logs in a user and gives them an access token.
 
 * username - string
 * password - string
+
 ------------------------------------
 GET /auth_test
 
@@ -35,6 +37,7 @@ creates a new post for a specific user.
 * user_id - integer
 * title - string
 * url - string
+
 ------------------------------------
 GET /users/:id/posts
 
@@ -57,6 +60,7 @@ Adds an 'upvote' for a specific post.
 
 * user_id - integer
 * post_id - integer
+
 ------------------------------------
 
 
@@ -70,6 +74,7 @@ Creates a comment for a specific post.
 * user_id - integer
 * post_id - integer
 * content - string
+
 ------------------------------------
 GET /users/:id/posts/:post_id/comments
 
@@ -77,6 +82,7 @@ Get all comments and comment data for a specific post.
 
 * user_id - integer
 * post_id - integer
+
 ------------------------------------
 DELETE /users/:id/posts/:post_id/comments/:comment_id
 
@@ -85,4 +91,5 @@ Deletes a specific comment for a specific post.
 * user_id - integer
 * post_id - integer
 * comment_id - integer
+
 ------------------------------------
