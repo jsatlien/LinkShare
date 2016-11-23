@@ -12,9 +12,11 @@ class VoteController {
     data.post_id = postId
     data.vote_count = 1
 
-    let voteCheck = yield Vote.query().where('user_id', user.id)andWhere('post_id', postId)
-
-    if (voteCheck.vote_count.length = 0) {
+    let voteCheck = yield Vote.query()
+      .where({'post_id': postId,
+              'user_id': user.id }).select('vote_count')
+    console.log(voteCheck)
+    if (voteCheck !== 1 ) {
       let addVote =yield Vote.create(data)
 
       let post = yield Post.findBy('id', data.post_id)
@@ -24,13 +26,15 @@ class VoteController {
         post.vote_count++
       }
       yield post.save()
+
+      response.json([addVote, post])
+    } else {
+      response.status(401).json({error: "User can only cast 1 vote per post."})
     }
-
-    response.json(addVote, post)
-
 
 
   }
+
 }
 
 module.exports = VoteController
