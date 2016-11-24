@@ -13,10 +13,10 @@ class VoteController {
 
     let voteCheck = yield Vote.query()
       .where({'post_id': postId,
-              'user_id': currentUser.id }).select('vote_status');
+              'user_id': currentUser.id })
     console.log(voteCheck)
 
-    if (voteCheck === true) {
+    if (voteCheck) {
       response.status(401).json({error: "User can only cast 1 vote per post."})
     } else {
       let addVote = yield Vote.create(data)
