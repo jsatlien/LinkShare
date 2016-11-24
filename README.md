@@ -61,8 +61,6 @@ POST /users/:id/posts/:post_id
 
 Adds an 'upvote' for a specific post.
 
-* user_id - integer
-* post_id - integer
 
 ------------------------------------
 
@@ -74,9 +72,8 @@ POST /users/:id/posts/:post_id/comments
 
 Creates a comment for a specific post.
 
-* user_id - integer
-* post_id - integer
 * content - string
+
 
 ------------------------------------
 GET /users/:id/posts/:post_id/comments

@@ -17,21 +17,20 @@ class VoteController {
 
     if (!voteCheck) {
       let addVote = yield Vote.create(data)
+      yield addVote.save();
       let post = yield Post.findBy('id', data.post_id)
-      if (post.vote_count = null ) {
-        post.vote_count = 1
+      let votes = post.vote_count;
+      if (votes === null ) {
+        post.vote_count = 1;
       } else {
-        post.vote_count++
+        post.vote_count = votes++;
       }
       yield post.save()
 
-      response.status(202).json({'New Vote' : addVote,
-                         'Post' : post
-                       });
+      response.status(202).json([post, addVote];
     } else {
       response.status(401).json({error: "User can only cast 1 vote per post."})
     }
-
 
   }
 
