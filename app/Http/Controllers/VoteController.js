@@ -15,7 +15,9 @@ class VoteController {
       .where({'post_id': postId,
               'user_id': currentUser.id });
 
-    if (!voteCheck) {
+    if (voteCheck) {
+      response.status(401).json({error: "User can only cast 1 vote per post."})
+    } else {
       let addVote = yield Vote.create(data)
       yield addVote.save();
       let post = yield Post.findBy('id', data.post_id)
@@ -28,8 +30,6 @@ class VoteController {
       yield post.save()
 
       response.status(202).json([post, addVote]);
-    } else {
-      response.status(401).json({error: "User can only cast 1 vote per post."})
     }
 
   }
