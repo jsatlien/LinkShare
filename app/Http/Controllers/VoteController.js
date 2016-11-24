@@ -24,10 +24,11 @@ class VoteController {
       let post = yield Post.findBy('id', data.post_id)
       let votes = post.vote_count;
       if (votes === null ) {
-        post.vote_count = 1;
+        votes = 1;
       } else {
-        post.vote_count = votes++;
+        votes++;
       }
+      post.vote_count = votes;
       yield post.save()
 
       response.status(202).json([post, addVote]);
