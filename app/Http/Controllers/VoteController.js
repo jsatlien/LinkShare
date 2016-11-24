@@ -8,7 +8,7 @@ class VoteController {
     let currentUser = request.authUser
     let postId = request.param('post_id')
     let data = {}
-    data.user_id = Currentuser.id
+    data.user_id = currentUser.id
     data.post_id = postId
 
     let voteCheck = yield Vote.query()
@@ -27,7 +27,7 @@ class VoteController {
       }
       yield post.save()
 
-      response.status(202).json([post, addVote];
+      response.status(202).json([post, addVote]);
     } else {
       response.status(401).json({error: "User can only cast 1 vote per post."})
     }
